@@ -5,7 +5,7 @@ class Geocash < ApplicationRecord
 
   before_validation :assign_new_preshared_secret, unless: :preshared_secret?
 
-  validates :preshared_secret, presence: true
+  validates :preshared_secret, :description, presence: true
 
   def generate_preshared_secret
     (0...8).map { SecureRandom.random_number(36**16).to_s(36).rjust(16, '0') }.join ''
