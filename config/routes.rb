@@ -5,5 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :transfers, only: [:show, :new, :create, :edit, :update]
+  resources :accounts, only: [:show] do
+    resources :transfers, only: [:show, :new, :create, :edit, :update]
+  end
 end

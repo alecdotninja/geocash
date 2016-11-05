@@ -8,7 +8,7 @@ class Transfer < ApplicationRecord
   scope :deposits, -> { where(arel_table[:amount].gt(0)) }
 
   validates :account, :authorization_code, presence: true
-  validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: -100, less_than_or_equal_to: 100 }
+  validates :amount, numericality: { only_integer: true, greater_than_or_equal_to: -100, less_than_or_equal_to: 100, not_equal_to: 0 }
 
   before_validation :assign_new_authorization_code, unless: :authorization_code?
   before_validation :apply_confirmation_code, if: :confirmation_code?, unless: :confirmed?
@@ -31,6 +31,14 @@ class Transfer < ApplicationRecord
 
   def generate_authorization_code
     CodeManager.generate(amount: amount, secret: authorization_code_secret) if amount.present? && authorization_code_secret.present?
+  end
+
+  def deposit?
+    amount > 0 if amount
+  end
+
+  def withdrawal?
+    amount < 0 if amount
   end
 
   private

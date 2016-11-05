@@ -6,9 +6,9 @@
   = render 'new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: geocashes
 
 -#TODO -- change this to the index view and have these fields on each line with a box to enter the confirmation code
-= form_for transfer do |t|
-  = t.text_field :confirmation_code
-  = t.submit 'Submit', class: 'btn btn-secondary'
+= form_for transfer do |f|
+  = f.text_field :confirmation_code
+  = f.submit 'Submit', class: 'btn btn-secondary'
   %button.btn.btn-primary{"data-target" => "#codeModal", "data-toggle" => "modal", :type => "button"} Current codes
   #codeModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "codeModalLabel", :role => "dialog", :tabindex => "-1"}
     .modal-dialog{:role => "document"}

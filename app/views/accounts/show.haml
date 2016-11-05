@@ -1,0 +1,44 @@
+.container
+  .row
+    .col-md-6
+      = form_for account.transfers.new, url: account_transfers_path(account) do |f|
+        = render 'transfers/new_transfer_modal', f: f, modal_name: 'deposit', geocashes: Geocash.all
+        = render 'transfers/new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: Geocash.all
+    .col-md-6
+      %span
+        Account Balance:
+        = account.confirmed_balance
+      |
+      %span
+        Available Balance:
+        = account.available_balance
+  .row
+    .col-md-12
+      %table.table.table-striped
+        %thead.thead-inverse
+          %tr
+            %th
+              Transaction
+            %th
+              Amount
+            %th
+        %tbody
+          - account.transfers.each do |transfer|
+            %tr
+              - if transfer.deposit?
+                %td
+                  Deposit
+                %td
+                  = number_to_currency(transfer.amount)
+                %td
+                  = transfer.authorization_code
+                  = form_for transfer do |f|
+                    = f.text_field :confirmation_code
+                    = f.submit 'Confirm'
+              - if transfer.withdrawal?
+                %td
+                  Withdrawal
+                %td
+                  = number_to_currency(transfer.amount, negative_format: '(%u%n)')
+                %td
+                  = transfer.authorization_code

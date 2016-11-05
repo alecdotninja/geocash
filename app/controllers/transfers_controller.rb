@@ -5,19 +5,18 @@ class TransfersController < ApplicationController
   end
 
   def new
-    transfer = Transfer.new(account: Account.first_or_create)
+    transfer = current_account.transfers.new
 
-    render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: transfer.account }
+    render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: current_account }
   end
 
   def create
-    binding.pry
-    transfer = Transfer.new(transfer_params)
+    transfer = current_account.transfers.new(transfer_params)
 
     if transfer.save
       redirect_to :show, locals: { transfer: transfer }
     else
-      render :new, locals: { transfer: transfer }
+      render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: current_account }
     end
   end
 
