@@ -1,0 +1,23 @@
+.geocash-simulator {
+  label.card-header {
+    display: block;
+  }
+
+  #authorization-code-field,
+  #deposit-actual-amount-field {
+    font-family: Consolas, Lucida Console, monospace;
+
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .step-2, .step-3 {
+    display: none;
+  }
+
+  .dispense-button, .deposit-button, .reset-button {
+    width: 100%;
+  }
+
+
+}

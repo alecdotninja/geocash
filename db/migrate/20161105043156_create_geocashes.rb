@@ -3,7 +3,7 @@ class CreateGeocashes < ActiveRecord::Migration[5.0]
     create_table :geocashes, id: :uuid do |t|
       t.timestamps null: false
 
-      t.binary :preshared_secret, null: false
+      t.string :preshared_secret, null: false, limit: 256
     end
   end
 end

@@ -17,4 +17,6 @@
 //= require turbolinks
 //= require decl
 //= require sha256
+//= require biginteger
+//= require cleave
 //= require_tree .

@@ -1,8 +1,50 @@
-.container-fluid.geocash-simulator{ data: { preshared_secret_base64: geocash.preshared_secret_base64 } }
-  .row
-    .col-md-push-2.col-md-8
-      %form.form
-        .form-group
-          %label.control-label{for: 'authorization_code'} Authorization Code
-          %input.form-control{name: 'authorization_code', placeholder: 'XXXX-XXXX'}
+.geocash-simulator{ data: { preshared_secret: geocash.preshared_secret } }
+  .container-fluid
+    .row
+      .col-md-4.offset-md-4
 
+
+        .card.step-1.withdraw-flow.deposit-flow
+          %label.card-header{for: 'authorization-code-field'}
+            Authorization Code
+          .card-block
+            .form-group
+              %input.form-control#authorization-code-field{placeholder: 'XXXX-XXXX'}
+
+        .card.step-2.withdraw-flow
+          .card-header
+            Withdraw
+          .card-block
+            %p.card-text
+              The code you entered entitles you to
+              = succeed '.' do
+                %strong.withdraw-amount
+
+            %button.dispense-button.btn.btn-primary
+              Dispense
+
+        .card.step-2.deposit-flow
+          .card-header
+            Deposit
+          .card-block
+            %p.card-text
+              The code you entered is planned to deposit
+              = succeed ',' do
+                %strong.deposit-amount
+              but you may enter any amount.
+
+            .form-group
+              %input.form-control#deposit-actual-amount-field{placeholder: '$0'}
+
+            %button.deposit-button.btn.btn-primary
+              Deposit
+
+        .card.step-3.withdraw-flow.deposit-flow
+          %label.card-header{for: 'authorization-code-field'}
+            Thank you
+          .card-block
+            %p.card-text
+              Your transaction is complete.
+
+            %button.reset-button.btn.btn-primary
+              Reset
