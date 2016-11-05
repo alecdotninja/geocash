@@ -11,6 +11,7 @@ class TransfersController < ApplicationController
   end
 
   def create
+    binding.pry
     transfer = Transfer.new(transfer_params)
 
     if transfer.save
@@ -42,6 +43,6 @@ class TransfersController < ApplicationController
   end
 
   def transfer_params
-    params.require(:transfer).permit(:account_uuid, :amount, :confirmation_code, :confirmed_at)
+    params.require(:transfer).permit(:account_id, :geocash_id, :amount, :confirmation_code, :confirmed_at)
   end
 end

@@ -11,5 +11,5 @@
         = f.select :geocash_id, options_from_collection_for_select(geocashes, 'id', 'id')
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-        %button.btn.btn-primary{:type => "button"} Save changes
+        = f.submit 'Get GeoCa$h Code', class: 'btn btn-primary'
 
