@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require decl
+//= require sha256
 //= require_tree .

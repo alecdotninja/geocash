@@ -6,6 +6,6 @@ class GeocashesController < ApplicationController
   private
 
   def geocash
-    @geocash ||= Geocash.find_by id: params[:id]
+    @geocash ||= Geocash.find_by!(id: params[:id])
   end
 end

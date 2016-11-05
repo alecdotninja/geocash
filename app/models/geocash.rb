@@ -11,6 +11,10 @@ class Geocash < ApplicationRecord
     SecureRandom.random_bytes(PRESHARED_SECRET_BYTE_LENGTH)
   end
 
+  def preshared_secret_base64
+    @preshared_secret_base64 ||= Base64.encode64(preshared_secret) if preshared_secret.present?
+  end
+
   private
 
   def assign_new_preshared_secret

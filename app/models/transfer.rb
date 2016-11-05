@@ -1,5 +1,3 @@
-require 'code_manager'
-
 class Transfer < ApplicationRecord
   belongs_to :account, inverse_of: :transfers
   belongs_to :geocash, inverse_of: :transfers
