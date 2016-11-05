@@ -1,0 +1,15 @@
+%button.btn.btn-secondary.btn-lg{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}=modal_name.capitalize
+.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "#{modal_name}ModalLabel", :role => "dialog", :tabindex => "-1", id: "#{modal_name}Modal"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .modal-header
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title{id: "#{modal_name}ModalLabel"}=modal_name.capitalize
+      .modal-body
+        = f.number_field :amount, step: 1
+        = f.select :geocash_id, options_from_collection_for_select(geocashes, 'id', 'id')
+      .modal-footer
+        %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
+        = f.submit 'Get GeoCa$h Code', class: 'btn btn-primary'
+
