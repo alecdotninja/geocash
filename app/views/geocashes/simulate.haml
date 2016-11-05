@@ -36,15 +36,16 @@
             .form-group
               %input.form-control#deposit-actual-amount-field{placeholder: '$0'}
 
-            %button.deposit-button.btn.btn-primary
+            %button.deposit-button.btn.btn-primary{disabled: true}
               Deposit
 
         .card.step-3.withdraw-flow.deposit-flow
           %label.card-header{for: 'authorization-code-field'}
-            Thank you
+            Thank you!
           .card-block
             %p.card-text
-              Your transaction is complete.
-
-            %button.reset-button.btn.btn-primary
-              Reset
+              Your code has been redeemed.
+              %span.confirmation-code-message
+                To expedite this transaction, enter the confirmation code
+                %strong.confirmation-code
+                on your device.
