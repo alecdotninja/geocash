@@ -1,11 +1,11 @@
 class GeocashesController < ApplicationController
   def simulate
-    render :simulate, locals: { geocache: geocache }
+    render :simulate, locals: { geocash: geocash }
   end
 
   private
 
-  def geocache
-    @geocache ||= Geocash.find_by id: params[:id]
+  def geocash
+    @geocash ||= Geocash.find_by id: params[:id]
   end
 end
