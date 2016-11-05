@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :accounts, only: [:show] do
-    resources :transfers, only: [:show, :new, :create, :edit, :update]
+    resources :transfers, only: [:create, :update]
   end
 end

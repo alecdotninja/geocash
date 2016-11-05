@@ -1,5 +1,7 @@
 if Geocash.count == 0
-  1..10.times do |i|
-    Geocash.create!
-  end
+  Geocash.create!(description: 'Agape Red')
+  Geocash.create!(description: 'Hole in Tree')
+  Geocash.create!(description: 'Shoe in Park')
+  Geocash.create!(description: 'Old Market Scooters')
+  Geocash.create!(description: 'Toadstool Geologic Park')
 end
