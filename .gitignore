@@ -15,6 +15,16 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+/config/database.yml
+/config/app_config.yml
+coverage
+public/assets
+public/system
+gemsurance_report.html
+*.~lock*
+.ruby-gemset
+.pryrc
+uploaded_files
 
 # Ignore Byebug command history file.
 .byebug_history
