@@ -9,8 +9,7 @@
 
 .idea
 .DS_store
-
-.bash-history
+.bash_history
 
 # Ignore all logfiles and tempfiles.
 /log/*
