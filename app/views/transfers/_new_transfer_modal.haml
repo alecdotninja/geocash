@@ -8,7 +8,7 @@
         %h4.modal-title{id: "#{modal_name}ModalLabel"}=modal_name.capitalize
       .modal-body
         = f.number_field :amount, step: 1
-        = f.select :geocash_id, options_from_collection_for_select(geocashes, 'id', 'id')
+        = f.select :geocash_id, options_from_collection_for_select(geocashes, :id, :description)
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
         = f.submit 'Get GeoCa$h Code', class: 'btn btn-primary'
