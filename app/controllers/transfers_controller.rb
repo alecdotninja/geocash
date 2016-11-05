@@ -5,7 +5,9 @@ class TransfersController < ApplicationController
   end
 
   def new
-    render :new, locals: { transfer: transfer }
+    transfer = Transfer.new(account: Account.first_or_create)
+
+    render :new, locals: { transfer: transfer, geocashes: Geocash.all }
   end
 
   def create
@@ -40,6 +42,6 @@ class TransfersController < ApplicationController
   end
 
   def transfer_params
-
+    params.require(:transfer).permit(:account_uuid, :amount, :confirmation_code, :confirmed_at)
   end
 end

@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'haml'
 gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'ffaker'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
