@@ -30,13 +30,15 @@ ActiveRecord::Schema.define(version: 20161105071752) do
   create_table "transfers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.uuid     "account_id"
-    t.decimal  "amount"
+    t.uuid     "account_id",         null: false
+    t.uuid     "geocash_id",         null: false
+    t.integer  "amount",             null: false
     t.string   "authorization_code", null: false
-    t.string   "confirmation_code"
     t.datetime "confirmed_at"
     t.index ["account_id"], name: "index_transfers_on_account_id", using: :btree
+    t.index ["geocash_id"], name: "index_transfers_on_geocash_id", using: :btree
   end
 
   add_foreign_key "transfers", "accounts"
+  add_foreign_key "transfers", "geocashes"
 end

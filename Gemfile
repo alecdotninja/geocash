@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml'
 gem 'bootstrap', '~> 4.0.0.alpha5'
 gem 'ffaker'
+gem 'seedbank'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -46,7 +47,6 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'seedbank'
   gem 'factory_girl'
   gem 'simplecov'
 end

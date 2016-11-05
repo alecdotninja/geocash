@@ -7,7 +7,7 @@ class TransfersController < ApplicationController
   def new
     transfer = Transfer.new(account: Account.first_or_create)
 
-    render :new, locals: { transfer: transfer, geocashes: Geocash.all }
+    render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: transfer.account }
   end
 
   def create

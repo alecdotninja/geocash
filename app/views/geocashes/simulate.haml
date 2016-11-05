@@ -1,1 +1,8 @@
-Hello, world!
+.container-fluid.geocash-simulator{ data: { preshared_secret_base64: geocash.preshared_secret_base64 } }
+  .row
+    .col-md-push-2.col-md-8
+      %form.form
+        .form-group
+          %label.control-label{for: 'authorization_code'} Authorization Code
+          %input.form-control{name: 'authorization_code', placeholder: 'XXXX-XXXX'}
+

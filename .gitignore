@@ -11,6 +11,7 @@
 .DS_store
 .pry_history
 .bash_history
+.pry_history
 
 # Ignore all logfiles and tempfiles.
 /log/*

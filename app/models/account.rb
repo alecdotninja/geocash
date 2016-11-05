@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-  has_many :transfers, dependent: :destroy, inverse_of: :account
+  has_many :transfers, dependent: :restrict_with_error, inverse_of: :account
 
   def confirmed_balance
     transfers.confirmed.sum(:amount)
