@@ -9,11 +9,11 @@
     .col-md-6
       %span
         Account Balance:
-        = account.balance
+        = number_to_currency(account.balance, negative_format: '(%u%n)')
       |
       %span
         Available Balance:
-        = account.available_balance
+        = number_to_currency(account.available_balance, negative_format: '(%u%n)')
   .row
     .col-md-12
       %table.table.table-striped

@@ -1,4 +1,9 @@
-%button.btn.btn-secondary.btn-lg{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}=modal_name.capitalize
+- if modal_name == 'deposit'
+  %button.btn.btn-secondary.btn-lg.modal-button.deposit-button{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}
+    = image_tag('deposit.png')
+- elsif modal_name == 'withdrawal'
+  %button.btn.btn-secondary.btn-lg.modal-button.withdraw-button{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}
+    = image_tag('withdraw.png')
 .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "#{modal_name}ModalLabel", :role => "dialog", :tabindex => "-1", id: "#{modal_name}Modal"}
   .modal-dialog{:role => "document"}
     .modal-content
