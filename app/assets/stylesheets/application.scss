@@ -53,4 +53,15 @@ body {
       height: 50px;
     }
   }
+
+  .modal-footer {
+    .brand-button {
+      background-color: $brand-green;
+      border-color: darken($brand-green, 5%);
+
+      &:hover {
+        background-color: darken($brand-green, 5%);
+      }
+    }
+  }
 }
