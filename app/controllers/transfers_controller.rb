@@ -1,38 +1,28 @@
 class TransfersController < ApplicationController
-
-  def show
-    render :show, locals: { transfer: transfer }
-  end
-
-  def new
-    transfer = current_account.transfers.new
-
-    render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: current_account }
-  end
-
   def create
     transfer = current_account.transfers.new(transfer_params)
 
-    if transfer.save
-      redirect_to :show, locals: { transfer: transfer }
-    else
-      render :new, locals: { transfer: transfer, geocashes: Geocash.all, account: current_account }
+    if params[:transfer_type] == 'withdrawal'
+      transfer.amount = -params[:transfer][:amount].to_i
+    elsif params[:transfer_type] == 'deposit'
+      transfer.amount = params[:transfer][:amount].to_i
     end
-  end
 
-  def edit
-    render :edit, locals: { transfer: transfer }
+    if transfer.save
+      redirect_to account_path(transfer.account)
+    else
+      redirect_to account_path(transfer.account)
+    end
   end
 
   def update
-    transfer = transfer.assign_attributes(transfer_params)
+    transfer.assign_attributes(transfer_params)
 
     if transfer.save
-      redirect_to :show, locals: { transfer: transfer }
+      redirect_to account_path(transfer.account)
     else
-      render :edit, locals: { transfer: transfer }
+      redirect_to account_path(transfer.account)
     end
-
   end
 
   private
@@ -42,6 +32,6 @@ class TransfersController < ApplicationController
   end
 
   def transfer_params
-    params.require(:transfer).permit(:account_id, :geocash_id, :amount, :confirmation_code, :confirmed_at)
+    params.require(:transfer).permit(:geocash_id, :confirmation_code, :confirmed_at)
   end
 end

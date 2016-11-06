@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20161105190338) do
   end
 
   create_table "geocashes", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.binary   "preshared_secret", null: false
-    t.string   "description",      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "preshared_secret", limit: 256, null: false
+    t.string   "description",                  null: false
   end
 
   create_table "transfers", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|

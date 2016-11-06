@@ -3,9 +3,17 @@ class GeocashesController < ApplicationController
     render :simulate, locals: { geocash: geocash }
   end
 
+  def index
+    render :index, locals: { geocashes: geocashes }
+  end
+
   private
 
   def geocash
-    @geocash ||= Geocash.find_by!(id: params[:id])
+    @geocash ||= geocashes.find_by!(description: params[:description])
+  end
+
+  def geocashes
+    @geocashes ||= Geocash.all
   end
 end

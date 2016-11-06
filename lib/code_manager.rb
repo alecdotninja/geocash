@@ -1,5 +1,5 @@
 class CodeManager
-  CODE_CHARS = %w( 1 2 3 4 5 6 7 8 9 A B C D E F G H I J K L M N P Q R S T U V W X Y Z )
+  CODE_CHARS = %w( 2 3 4 5 6 7 8 9 A B C D E F G H J K L M N P Q R S T U V W X Y Z )
   CODE_SEPARATOR = '-'
   MAX_AMOUNT_MAGNITUDE = 100
 

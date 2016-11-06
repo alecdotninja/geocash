@@ -10,6 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ * Income by Sergey Demushkin from the Noun Project
+ * Payment by Sergey Demushkin from the Noun Project
+ *
  //*= require_tree .
  //*= require_self
  //*/
@@ -21,20 +24,6 @@
 @import "geocache-simulator";
 
 body {
-
-  #heroImage {
-    height: 555px;
-    position: relative;
-    width: 100%;
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 100%;
-    }
-  }
 
   .thead-inverse {
     th {
@@ -56,5 +45,12 @@ body {
   span {
     font-family: $nunito;
     color: $text-gray;
+  }
+
+  button.modal-button {
+    img {
+      width: auto;
+      height: 50px;
+    }
   }
 }

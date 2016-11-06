@@ -73,11 +73,11 @@
     $(document).on('input geocache:touch', '.geocash-simulator #deposit-actual-amount-field', function() {
         var $depositActualAmountField = $(this);
         var $card = $depositActualAmountField.parents('.card:first');
-        var actualDepositAmount = ~~$depositActualAmountField.val().replace(/^\$/, '');
+        var actualDepositAmount = Math.floor($depositActualAmountField.val().replace(/^\$/, ''));
 
         $card.removeClass('has-danger has-success');
         
-        if(actualDepositAmount > 0 && actualDepositAmount < 100) {
+        if(actualDepositAmount > 0 && actualDepositAmount <= 100) {
             $card.addClass('has-success');
             $card.find('.deposit-button').prop('disabled', false);
         }else{
@@ -93,7 +93,7 @@
 
         var presharedSecret = $geocashSimulator.attr('data-preshared-secret');
         var authorizationCode = $authorizationCodeField.val();
-        var actualDepositAmount = ~~$depositActualAmountField.val().replace(/^\$/, '');
+        var actualDepositAmount = Math.floor($depositActualAmountField.val().replace(/^\$/, ''));
 
         authorizationCodeConfirmationCode[authorizationCode] = computeCode(actualDepositAmount, 'CONF-FOR-' + authorizationCode + '-' + presharedSecret);
         $authorizationCodeField.trigger('geocache:touch');
@@ -107,12 +107,7 @@
         $authorizationCodeField.trigger('geocache:touch');
     });
 
-    var CODE_CHARS = [
-        '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
-        'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S',
-        'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    ];
+    var CODE_CHARS = ["2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"];
     var CODE_SEPARATOR = '-';
     var MAX_AMOUNT_MAGNITUDE = 100;
 
@@ -124,7 +119,7 @@
 
     var RANDOMNESS_ENTROPY = Math.pow(CODE_CHARS.length, 4);
 
-    var DIGEST_ENTROPY = ~~(CODE_ENTROPY / (AMOUNT_ENTROPY * RANDOMNESS_ENTROPY));
+    var DIGEST_ENTROPY = Math.floor(CODE_ENTROPY / (AMOUNT_ENTROPY * RANDOMNESS_ENTROPY));
 
     function computeVerifiedAmount(code, secret) {
         var __return = unpack(numberify(code), AMOUNT_SIGN_BIT_ENTROPY, AMOUNT_MAGNITUDE_ENTROPY, RANDOMNESS_ENTROPY, DIGEST_ENTROPY);
@@ -162,7 +157,7 @@
     }
 
     function computeRandomness() {
-        return ~~(Math.random() * RANDOMNESS_ENTROPY);
+        return Math.floor(Math.random() * RANDOMNESS_ENTROPY);
     }
 
     function pack(__parts) {
@@ -189,7 +184,7 @@
         for(var index = __entropies.length - 1, entropy; index >= 0; index--) {
             entropy = __entropies[index];
             values.unshift(number % entropy);
-            number = ~~(number / entropy);
+            number = Math.floor(number / entropy);
         }
 
         return values;
@@ -208,7 +203,7 @@
                 char = CODE_SEPARATOR;
             }else{
                 char = CODE_CHARS[number % base];
-                number = ~~(number / base);
+                number = Math.floor(number / base);
             }
 
             chars.push(char);

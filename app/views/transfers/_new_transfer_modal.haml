@@ -1,4 +1,9 @@
-%button.btn.btn-secondary.btn-lg{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}=modal_name.capitalize
+- if modal_name == 'deposit'
+  %button.btn.btn-secondary.btn-lg.modal-button.deposit-button{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}
+    = image_tag('deposit.png')
+- elsif modal_name == 'withdrawal'
+  %button.btn.btn-secondary.btn-lg.modal-button.withdraw-button{"data-target" => "##{modal_name}Modal", "data-toggle" => "modal", :type => "button"}
+    = image_tag('withdraw.png')
 .modal.fade{"aria-hidden" => "true", "aria-labelledby" => "#{modal_name}ModalLabel", :role => "dialog", :tabindex => "-1", id: "#{modal_name}Modal"}
   .modal-dialog{:role => "document"}
     .modal-content
@@ -7,7 +12,8 @@
           %span{"aria-hidden" => "true"} ×
         %h4.modal-title{id: "#{modal_name}ModalLabel"}=modal_name.capitalize
       .modal-body
-        = f.number_field :amount, step: 1
+        = hidden_field_tag :transfer_type, modal_name
+        = f.number_field :amount, step: 1, min: 1, max: 100
         = f.select :geocash_id, options_from_collection_for_select(geocashes, :id, :description)
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close

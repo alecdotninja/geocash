@@ -1,17 +1,19 @@
 .container
   .row
-    .col-md-6
+    .col-md-3
       = form_for account.transfers.new, url: account_transfers_path(account) do |f|
         = render 'transfers/new_transfer_modal', f: f, modal_name: 'deposit', geocashes: Geocash.all
+    .col-md-3
+      = form_for account.transfers.new, url: account_transfers_path(account) do |f|
         = render 'transfers/new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: Geocash.all
     .col-md-6
       %span
         Account Balance:
-        = account.confirmed_balance
+        = number_to_currency(account.balance, negative_format: '(%u%n)')
       |
       %span
         Available Balance:
-        = account.available_balance
+        = number_to_currency(account.available_balance, negative_format: '(%u%n)')
   .row
     .col-md-12
       %table.table.table-striped
@@ -32,13 +34,14 @@
                   = number_to_currency(transfer.amount)
                 %td
                   = transfer.authorization_code
-                  = form_for [account, transfer] do |f|
-                    = f.text_field :confirmation_code
-                    = f.submit 'Confirm'
+                  - if !transfer.confirmed?
+                    = form_for [account, transfer] do |f|
+                      = f.text_field :confirmation_code
+                      = f.submit 'Confirm'
               - if transfer.withdrawal?
                 %td
                   Withdrawal
-                %td
+                %td.text-danger
                   = number_to_currency(transfer.amount, negative_format: '(%u%n)')
                 %td
                   = transfer.authorization_code
