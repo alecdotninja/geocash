@@ -13,9 +13,13 @@
         %h4.modal-title{id: "#{modal_name}ModalLabel"}=modal_name.capitalize
       .modal-body
         = hidden_field_tag :transfer_type, modal_name
-        = f.number_field :amount, step: 1, min: 1, max: 100
-        = f.select :geocash_id, options_from_collection_for_select(geocashes, :id, :description)
+        .form-group
+          = f.label 'Enter an Amount'
+          = f.number_field :amount, step: 1, min: 1, max: 100, class: 'form-control'
+        .form-group
+          = f.label 'Select a Geocash'
+          = f.select :geocash_id, options_from_collection_for_select(geocashes, :id, :description), {}, class: 'form-control'
       .modal-footer
         %button.btn.btn-secondary{"data-dismiss" => "modal", :type => "button"} Close
-        = f.submit 'Get GeoCa$h Code', class: 'btn btn-primary'
+        = f.submit 'Get GeoCa$h Code', class: 'btn btn-primary brand-button'
 
