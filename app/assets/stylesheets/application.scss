@@ -19,3 +19,42 @@
 @import "fonts";
 
 @import "geocache-simulator";
+
+body {
+
+  #heroImage {
+    height: 555px;
+    position: relative;
+    width: 100%;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+    }
+  }
+
+  .thead-inverse {
+    th {
+      font-family: $arvo;
+      background-color: $brand-green;
+    }
+  }
+
+  tbody {
+    background-color: #f9f9f9;
+  }
+
+  td {
+    font-family: $nunito;
+    color: $text-gray;
+    border: 2px solid #fff;
+  }
+
+  span {
+    font-family: $nunito;
+    color: $text-gray;
+  }
+}

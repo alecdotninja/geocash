@@ -32,7 +32,7 @@
                   = number_to_currency(transfer.amount)
                 %td
                   = transfer.authorization_code
-                  = form_for transfer do |f|
+                  = form_for [account, transfer] do |f|
                     = f.text_field :confirmation_code
                     = f.submit 'Confirm'
               - if transfer.withdrawal?

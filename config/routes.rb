@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'home/index'
+
   resources :geocashes do
     member do
       get :simulate
