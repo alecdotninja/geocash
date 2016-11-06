@@ -48,9 +48,32 @@ body {
   }
 
   button.modal-button {
+    width: 100%;
     img {
       width: auto;
       height: 50px;
     }
+  }
+
+  header {
+    .logo-container {
+      position: relative;
+      height: 75px;
+
+      img {
+        position: absolute;
+        top: -20px;
+        left: -60px;
+      }
+    }
+
+    .balances {
+      margin-top: 22px;
+      text-align: right;
+    }
+  }
+
+  section {
+    padding-bottom: 25px;
   }
 }
