@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :geocashes do
+  resources :geocashes, param: :description, only: [:index] do
     member do
       get :simulate
     end

@@ -1,0 +1,10 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+        Geocash
+  %tbody
+    - geocashes.each do |geocash|
+      %tr
+        %td
+          = link_to geocash.description, simulate_geocash_path(geocash)

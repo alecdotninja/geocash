@@ -11,6 +11,10 @@ class Geocash < ApplicationRecord
     (0...8).map { SecureRandom.random_number(36**16).to_s(36).rjust(16, '0') }.join ''
   end
 
+  def to_param
+    description
+  end
+
   private
 
   def assign_new_preshared_secret
