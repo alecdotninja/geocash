@@ -1,9 +1,10 @@
 .home
-  #heroImage
-    = link_to account_path(Account.first) do
+  = link_to account_path(Account.first) do
+    #heroImage
       =image_tag image_url('the_youths.jpeg')
-    .row
-      .col-sm-7
-      .col-sm-4
-        %h5 Your money, when you need it
-      .col-sm-1
+      .row
+        .col-sm-8
+        .col-sm-2.with-text
+          %h2 Your money
+          %h5 when you need it
+        .col-sm-2.without-text
