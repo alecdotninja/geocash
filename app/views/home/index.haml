@@ -1,7 +1,9 @@
 .home
   = link_to account_path(Account.first) do
     #heroImage
-      =image_tag image_url('the_youths.jpeg')
+      .logo-container
+        =image_tag image_url('First-National-Bank-Logo.png'), class: 'logo'
+      =image_tag image_url('the_youths.jpeg'), class: 'hero'
       .row
         .col-sm-8
         .col-sm-2.with-text

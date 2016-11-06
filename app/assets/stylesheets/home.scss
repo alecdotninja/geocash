@@ -6,7 +6,16 @@
 
 .home {
   #heroImage {
-    img {
+
+    .logo-container {
+      position: absolute;
+      height: 100px;
+      z-index: 1;
+      top: -16px;
+      left: 102px;
+    }
+
+    img.hero {
       position: absolute;
       bottom: 0;
       left: 0;

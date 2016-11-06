@@ -1,47 +1,55 @@
 .container
-  .row
-    .col-md-3
-      = form_for account.transfers.new, url: account_transfers_path(account) do |f|
-        = render 'transfers/new_transfer_modal', f: f, modal_name: 'deposit', geocashes: Geocash.all
-    .col-md-3
-      = form_for account.transfers.new, url: account_transfers_path(account) do |f|
-        = render 'transfers/new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: Geocash.all
-    .col-md-6
-      %span
-        Account Balance:
-        = number_to_currency(account.balance, negative_format: '(%u%n)')
-      |
-      %span
-        Available Balance:
-        = number_to_currency(account.available_balance, negative_format: '(%u%n)')
-  .row
-    .col-md-12
-      %table.table.table-striped
-        %thead.thead-inverse
-          %tr
-            %th
-              Transaction
-            %th
-              Amount
-            %th
-        %tbody
-          - account.transfers.each do |transfer|
+  %header
+    .row
+      .col-md-6
+        .logo-container
+          =image_tag image_url('First-National-Bank-Logo.png')
+      .col-md-6.balances
+        %span
+          Account Balance:
+          = number_to_currency(account.balance, negative_format: '(%u%n)')
+        |
+        %span
+          Available Balance:
+          = number_to_currency(account.available_balance, negative_format: '(%u%n)')
+  %section
+    .row
+      .col-md-8.offset-md-2
+        .col-md-5
+          = form_for account.transfers.new, url: account_transfers_path(account) do |f|
+            = render 'transfers/new_transfer_modal', f: f, modal_name: 'deposit', geocashes: Geocash.all
+        .col-md-5.offset-md-2
+          = form_for account.transfers.new, url: account_transfers_path(account) do |f|
+            = render 'transfers/new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: Geocash.all
+  %section
+    .row
+      .col-md-12
+        %table.table.table-striped
+          %thead.thead-inverse
             %tr
-              - if transfer.deposit?
-                %td
-                  Deposit
-                %td
-                  = number_to_currency(transfer.amount)
-                %td
-                  = transfer.authorization_code
-                  - if !transfer.confirmed?
-                    = form_for [account, transfer] do |f|
-                      = f.text_field :confirmation_code
-                      = f.submit 'Confirm'
-              - if transfer.withdrawal?
-                %td
-                  Withdrawal
-                %td.text-danger
-                  = number_to_currency(transfer.amount, negative_format: '(%u%n)')
-                %td
-                  = transfer.authorization_code
+              %th
+                Transaction
+              %th
+                Amount
+              %th
+          %tbody
+            - account.transfers.each do |transfer|
+              %tr
+                - if transfer.deposit?
+                  %td
+                    Deposit
+                  %td
+                    = number_to_currency(transfer.amount)
+                  %td
+                    = transfer.authorization_code
+                    - if !transfer.confirmed?
+                      = form_for [account, transfer] do |f|
+                        = f.text_field :confirmation_code
+                        = f.submit 'Confirm'
+                - if transfer.withdrawal?
+                  %td
+                    Withdrawal
+                  %td.text-danger
+                    = number_to_currency(transfer.amount, negative_format: '(%u%n)')
+                  %td
+                    = transfer.authorization_code
