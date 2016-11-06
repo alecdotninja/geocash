@@ -16,10 +16,10 @@
     .row
       .col-md-8.offset-md-2
         .col-md-5
-          = form_for account.transfers.new, url: account_transfers_path(account) do |f|
+          = form_for Transfer.new, url: account_transfers_path(account) do |f|
             = render 'transfers/new_transfer_modal', f: f, modal_name: 'deposit', geocashes: Geocash.all
         .col-md-5.offset-md-2
-          = form_for account.transfers.new, url: account_transfers_path(account) do |f|
+          = form_for Transfer.new, url: account_transfers_path(account) do |f|
             = render 'transfers/new_transfer_modal', f: f, modal_name: 'withdrawal', geocashes: Geocash.all
   %section
     .row
@@ -28,6 +28,8 @@
           %thead.thead-inverse
             %tr
               %th
+                Date Authorized
+              %th
                 Transaction
               %th
                 Amount
@@ -35,6 +37,8 @@
           %tbody
             - account.transfers.each do |transfer|
               %tr
+                %td
+                  = transfer.created_at.strftime('%D')
                 - if transfer.deposit?
                   %td
                     Deposit
