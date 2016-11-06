@@ -1,7 +1,7 @@
 if Geocash.count == 0
-  Geocash.create!(description: 'Agape Red')
-  Geocash.create!(description: 'Hole in Tree')
-  Geocash.create!(description: 'Shoe in Park')
-  Geocash.create!(description: 'Old Market Scooters')
-  Geocash.create!(description: 'Toadstool Geologic Park')
+  Geocash.create!(description: 'Agape Red', preshared_secret: '11domzzyk20qhnblfuh742yx4iibj6fpo8y2bbefotavao2uv9uoifama01hd66jygtpe975h8y37ok82dzp7tgilfnby14o1bmz4jcbpiagfgs5f8me9ye2ysqo2166')
+  Geocash.create!(description: '16th and Dodge', preshared_secret: 'inho53ue7zzjuv5lnuhb4oa5oemx5n9wdvzvx4i80hbooinh6kstn23lvs7vv1oa952m8sksbw1g4b3syx5p9di9oaao6g1ug9r6npqcfyehss0ohvpq1fivbessztti')
+  Geocash.create!(description: 'Shoe in Park', preshared_secret: 'xdw1ntpkeypkzi3gbj7unjvqqbbbnugm2lxyppeyg7y7o5x99qdukbr4ouivb9vlky7i0a8dtk2857uld1zushoiswjls6u5rdygvzbkcx87qdrlpmww1ukteopigf4i')
+  Geocash.create!(description: 'Old Market Scooters', preshared_secret: 'v4mirzvx8j9m97yy9jr3whyraf3ca5nzsrf39xr3seynswtj29j1to20xl3kh0po2509s283jhfcmzfp8d2xu6pzx6j3z37hhbav1br9qr0ourm9nzu6mtc5va8imuvr')
+  Geocash.create!(description: 'Toadstool Geologic Park', preshared_secret: 's6v3sneyxwql42dhb1bgap2aixjd9vi04bcwyk7m6a8qvys1lawukkbpocrb0hwsbsrp9bfcred7v0o94ac87w522g2lnjv1e26tepuozkbe0ub72skn0nv475rdkoxh')
 end
